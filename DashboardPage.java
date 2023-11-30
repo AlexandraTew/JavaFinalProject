@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class DashboardPage extends JFrame {
 
-    public DashboardPage() {
+    public DashboardPage(String cityName, int percentageScore) {
         // Set up the main window
         setTitle("Dashboard");
         setSize(1500, 800);
@@ -66,12 +66,17 @@ public class DashboardPage extends JFrame {
 
         add(bottomPanel, BorderLayout.SOUTH);
 
+        // Add a welcome message with the city name and percentage score
+        JLabel welcomeLabel = new JLabel("Welcome to " + cityName + "! Your match score: " + percentageScore + "%", JLabel.CENTER);
+        welcomeLabel.setFont(new Font("Open Sans", Font.BOLD, 24)); // Using Open Sans font
+        add(welcomeLabel, BorderLayout.CENTER);
+
         // Display the window
         setLocationRelativeTo(null); // Center the window
         setVisible(true);
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new DashboardPage());
+        SwingUtilities.invokeLater(() -> new DashboardPage("Sample City", 90)); // Example city and percentage score
     }
 }
