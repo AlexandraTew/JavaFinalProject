@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 public class ResultsPage extends JFrame {
 
     public ResultsPage() {
+            try {
+                UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         // Set up the main frame
         setTitle("Ranking Results");
         setSize(1500, 800);
@@ -18,7 +23,7 @@ public class ResultsPage extends JFrame {
 
         // Add the banner/header with adjusted font color
         JLabel headerLabel = new JLabel("Discover Home", JLabel.CENTER);
-        headerLabel.setFont(new Font("Open Sans", Font.BOLD, 34)); // Using Open Sans font
+        headerLabel.setFont(new Font("Sylfaen", Font.BOLD, 40));
         headerLabel.setForeground(new Color(33, 50, 100)); // Blue font color
         mainPanel.add(headerLabel, BorderLayout.NORTH);
 
