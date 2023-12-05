@@ -10,7 +10,7 @@ public class RankingsPage extends JFrame {
         setTitle("Rankings Page");
         setSize(1500, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().setBackground(new Color(0xE0F7FA)); // Light Blue background color
+        getContentPane().setBackground(new Color(152, 164, 125)); // Sage Green background color
         setLayout(new BorderLayout());
 
         // Left section: Image and User Instructions
@@ -19,7 +19,7 @@ public class RankingsPage extends JFrame {
         leftPanel.setPreferredSize(new Dimension(getWidth() / 2, getHeight()));
 
         // Placeholder for the image
-        ImageIcon handImageIcon = resizeImage("hand.jpg", 300, 200); // Set width and height as needed
+        ImageIcon handImageIcon = resizeImage("images/hand.jpg", 300, 200); // Set width and height as needed
         JLabel handImageLabel = new JLabel(handImageIcon);
         handImageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         leftPanel.add(Box.createVerticalGlue()); // Add vertical glue to center the image
@@ -33,14 +33,14 @@ public class RankingsPage extends JFrame {
 
         // Header for the rankings
         JLabel headerLabel = new JLabel("Rank these in order of importance");
-        headerLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        headerLabel.setFont(new Font("Open Sans", Font.BOLD, 16));
         headerLabel.setHorizontalAlignment(JLabel.CENTER);
         rightPanel.add(headerLabel);
 
         // Dropdown menus for rankings
         String[] rankingOptions = {
-                "Fresh Clean Local Produce",
-                "Proximity to Natural Spaces",
+                "Fresh Local Produce",
+                "Proximity to Parks and Natural Spaces",
                 "Abundance of Schools and Hospitals",
                 "Availability of Clean Energy",
                 "Risk of Inclement Weather"

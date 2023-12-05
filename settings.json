@@ -1,0 +1,19 @@
+{
+    "java.project.referencedLibraries": [
+        {
+            "referencedLibraries": [
+                {
+                    "classpath": "**/*.jar",
+                    "sourcePath": ".",
+                    "javadocPath": null,
+                    "name": "Java Final Project"
+                }
+            ],
+            "name": "Java Final Project",
+            "sourcePath": ".",
+            "output": "bin",
+            "distribution": null,
+            "workingDirectory": "${workspaceFolder}"
+        }
+    ]
+}

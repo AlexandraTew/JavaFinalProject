@@ -49,8 +49,8 @@ public class ResultsPage extends JFrame {
         resultPanel.setBackground(new Color(188, 194, 155)); // sage green background
 
         // Add side images
-        JLabel leftImage = new JLabel(new ImageIcon("borderimage1.jpg"));
-        JLabel rightImage = new JLabel(new ImageIcon("borderimage2.jpg"));
+        JLabel leftImage = new JLabel(new ImageIcon("images/borderimage1.jpg"));
+        JLabel rightImage = new JLabel(new ImageIcon("images/borderimage2.jpg"));
 
         mainPanel.add(leftImage, BorderLayout.WEST);
         mainPanel.add(rightImage, BorderLayout.EAST);
@@ -67,11 +67,9 @@ public class ResultsPage extends JFrame {
 
     private class ResultButtonListener implements ActionListener {
         private JFrame parentFrame;
-        private int resultNumber;
 
         public ResultButtonListener(JFrame parentFrame, int resultNumber) {
             this.parentFrame = parentFrame;
-            this.resultNumber = resultNumber;
         }
 
         @Override

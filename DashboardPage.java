@@ -4,11 +4,11 @@ import java.awt.*;
 public class DashboardPage extends JFrame {
 
     public DashboardPage(String cityName, int percentageScore) {
-            try {
-                UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         // Set up the main window
         setTitle("Dashboard");
         setSize(1500, 800);
@@ -21,44 +21,49 @@ public class DashboardPage extends JFrame {
 
         // Add a welcome message with the city name and percentage score at the top
         JLabel welcomeLabel = new JLabel("Welcome to " + cityName + "! Your match score: " + percentageScore + "%", JLabel.CENTER);
-        welcomeLabel.setFont(new Font("Sylfaen", Font.BOLD, 24)); // Using Open Sans font
+        welcomeLabel.setFont(new Font("Sylfaen", Font.BOLD, 24)); 
         welcomeLabel.setForeground(new Color(33, 50, 100)); // Blue font color
         mainPanel.add(welcomeLabel, BorderLayout.NORTH);
 
-        // Middle section: Two charts of equal width and height
+        // Middle section
         JPanel middlePanel = new JPanel(new GridLayout(1, 2));
         middlePanel.setPreferredSize(new Dimension(getWidth(), getHeight() / 2));
 
-        // Placeholder for chart 1
-        JLabel chart1 = new JLabel("Chart 1 Placeholder");
-        chart1.setHorizontalAlignment(JLabel.CENTER);
-        middlePanel.add(chart1);
+        // Image 1
+        ImageIcon imageIcon1 = new ImageIcon("images/Figure_1.png");
+        JLabel imageLabel1 = new JLabel(imageIcon1);
+        imageLabel1.setHorizontalAlignment(JLabel.CENTER);
+        middlePanel.add(imageLabel1);
 
-        // Placeholder for chart 2
-        JLabel chart2 = new JLabel("Chart 2 Placeholder");
-        chart2.setHorizontalAlignment(JLabel.CENTER);
-        middlePanel.add(chart2);
+        // Image 2
+        ImageIcon imageIcon2 = new ImageIcon("images/Figure_3.png");
+        JLabel imageLabel2 = new JLabel(imageIcon2);
+        imageLabel2.setHorizontalAlignment(JLabel.CENTER);
+        middlePanel.add(imageLabel2);
 
         mainPanel.add(middlePanel, BorderLayout.CENTER);
 
-        // Bottom section: Three smaller graphs
+        // Bottom section
         JPanel bottomPanel = new JPanel(new GridLayout(1, 3));
         bottomPanel.setPreferredSize(new Dimension(getWidth(), getHeight() / 3));
 
-        // Placeholder for graph 1
-        JLabel graph1 = new JLabel("Graph 1 Placeholder");
-        graph1.setHorizontalAlignment(JLabel.CENTER);
-        bottomPanel.add(graph1);
+        // Image 3
+        ImageIcon imageIcon3 = new ImageIcon("images/Figure_2.5.png"); 
+        JLabel imageLabel3 = new JLabel(imageIcon3);
+        imageLabel3.setHorizontalAlignment(JLabel.CENTER);
+        bottomPanel.add(imageLabel3);
 
-        // Placeholder for graph 2
-        JLabel graph2 = new JLabel("Graph 2 Placeholder");
-        graph2.setHorizontalAlignment(JLabel.CENTER);
-        bottomPanel.add(graph2);
+        // Image 4
+        ImageIcon imageIcon4 = new ImageIcon("images/Figure_2.5.png"); 
+        JLabel imageLabel4 = new JLabel(imageIcon4);
+        imageLabel4.setHorizontalAlignment(JLabel.CENTER);
+        bottomPanel.add(imageLabel4);
 
-        // Placeholder for graph 3
-        JLabel graph3 = new JLabel("Graph 3 Placeholder");
-        graph3.setHorizontalAlignment(JLabel.CENTER);
-        bottomPanel.add(graph3);
+        // Image 5
+        ImageIcon imageIcon5 = new ImageIcon("images/Figure_2.5.png"); 
+        JLabel imageLabel5 = new JLabel(imageIcon5);
+        imageLabel5.setHorizontalAlignment(JLabel.CENTER);
+        bottomPanel.add(imageLabel5);
 
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 
