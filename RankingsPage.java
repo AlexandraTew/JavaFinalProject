@@ -10,8 +10,18 @@ public class RankingsPage extends JFrame {
         setTitle("Rankings Page");
         setSize(1500, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().setBackground(new Color(152, 164, 125)); // Sage Green background color
         setLayout(new BorderLayout());
+
+        // Main panel with sage green background
+        JPanel mainPanel = new JPanel();
+        mainPanel.setBackground(new Color(152, 164, 125)); // Sage Green background color
+        mainPanel.setLayout(new BorderLayout());
+
+        // Add the banner/header with adjusted font color
+        JLabel headerLabel = new JLabel("Discover Home", JLabel.CENTER);
+        headerLabel.setFont(new Font("Sylfaen", Font.BOLD, 40));
+        headerLabel.setForeground(new Color(33, 50, 100)); // Blue font color
+        mainPanel.add(headerLabel, BorderLayout.NORTH);
 
         // Left section: Image and User Instructions
         JPanel leftPanel = new JPanel();
@@ -32,10 +42,10 @@ public class RankingsPage extends JFrame {
         rightPanel.setPreferredSize(new Dimension(getWidth() / 2, getHeight()));
 
         // Header for the rankings
-        JLabel headerLabel = new JLabel("Rank these in order of importance");
-        headerLabel.setFont(new Font("Open Sans", Font.BOLD, 16));
-        headerLabel.setHorizontalAlignment(JLabel.CENTER);
-        rightPanel.add(headerLabel);
+        JLabel rankingsHeaderLabel = new JLabel("Rank these in order of importance");
+        rankingsHeaderLabel.setFont(new Font("Open Sans", Font.BOLD, 16));
+        rankingsHeaderLabel.setHorizontalAlignment(JLabel.CENTER);
+        rightPanel.add(rankingsHeaderLabel);
 
         // Dropdown menus for rankings
         String[] rankingOptions = {
@@ -55,9 +65,10 @@ public class RankingsPage extends JFrame {
             rightPanel.add(rankingDropdown);
         }
 
-        // Submit button
+        // Submit button with sage green background
         JButton submitButton = new JButton("Submit");
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        submitButton.setBackground(new Color(152, 164, 125)); // Sage Green background color
         rightPanel.add(Box.createRigidArea(new Dimension(0, 20))); // Adjust vertical spacing
         rightPanel.add(submitButton);
 
@@ -75,8 +86,10 @@ public class RankingsPage extends JFrame {
             }
         });
 
-        add(leftPanel, BorderLayout.WEST);
-        add(rightPanel, BorderLayout.EAST);
+        mainPanel.add(leftPanel, BorderLayout.WEST);
+        mainPanel.add(rightPanel, BorderLayout.EAST);
+
+        add(mainPanel);
 
         // Display the window
         setLocationRelativeTo(null); // Center the window

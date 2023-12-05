@@ -6,10 +6,10 @@
                     "classpath": "**/*.jar",
                     "sourcePath": ".",
                     "javadocPath": null,
-                    "name": "Java Final Project"
+                    "name": "JavaFinalProject"
                 }
             ],
-            "name": "Java Final Project",
+            "name": "JavaFinalProject",
             "sourcePath": ".",
             "output": "bin",
             "distribution": null,

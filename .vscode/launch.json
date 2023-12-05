@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug (Launch)",
+            "type": "java",
+            "request": "launch",
+            "mainClass": "${file}",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopOnEntry": false,
+            "modulePaths": [],
+            "classpath": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/images"
+            ],
+            "encoding": "UTF-8",
+            "outDir": "${workspaceFolder}/.vscode/build",
+            "sourceMaps": false
+        }
+    ]
+}
