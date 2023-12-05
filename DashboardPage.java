@@ -54,7 +54,7 @@ public class DashboardPage extends JFrame {
         bottomPanel.add(imageLabel3);
 
         // Image 4
-        ImageIcon imageIcon4 = new ImageIcon("images/Figure_2.5.png"); 
+        ImageIcon imageIcon4 = new ImageIcon("images/Figure_4.png"); 
         JLabel imageLabel4 = new JLabel(imageIcon4);
         imageLabel4.setHorizontalAlignment(JLabel.CENTER);
         bottomPanel.add(imageLabel4);
