@@ -35,11 +35,15 @@ public class WelcomePage extends JFrame {
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(new Color(152, 164, 125));
         
+        //changing height of topPanel so the welcome label isnt so dwarfed by the size of the panel
+        topPanel.setPreferredSize(new Dimension(topPanel.getPreferredSize().width, 60)); 
+
+        
         //welcome label - 'Discover Home'
         JLabel welcomeLabel = new JLabel("Discover Home", JLabel.CENTER);
-        welcomeLabel.setFont(new Font("Sylfaen", Font.BOLD, 40));
+        welcomeLabel.setFont(new Font("Sylfaen", Font.BOLD,50));
         welcomeLabel.setForeground(new Color(33, 50, 100)); //blue font color
-        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 10)); //spacing around title
+        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(25, 0, 0, 0)); //spacing around title
         topPanel.add(welcomeLabel, BorderLayout.CENTER);
         mainPanel.add(topPanel, gbc); //adding to main panel for current grid row and column
 
@@ -108,7 +112,6 @@ public class WelcomePage extends JFrame {
         button.setForeground(Color.WHITE); //button text color
         button.setPreferredSize(new Dimension(200, 50));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //button.addActionListener(e -> JOptionPane.showMessageDialog(null, "Button Clicked!"));
         imageButtonPanel.add(button);
         imageButtonPanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
