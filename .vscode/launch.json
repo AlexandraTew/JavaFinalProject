@@ -2,6 +2,34 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "ResultsPage",
+            "request": "launch",
+            "mainClass": "ResultsPage",
+            "projectName": "JavaFinalProject_2f79b608"
+        },
+        {
+            "type": "java",
+            "name": "RankingsPage",
+            "request": "launch",
+            "mainClass": "RankingsPage",
+            "projectName": "JavaFinalProject_2f79b608"
+        },
+        {
+            "type": "java",
+            "name": "DashboardPage",
+            "request": "launch",
+            "mainClass": "DashboardPage",
+            "projectName": "JavaFinalProject_2f79b608"
+        },
+        {
+            "type": "java",
+            "name": "WelcomePage",
+            "request": "launch",
+            "mainClass": "WelcomePage",
+            "projectName": "JavaFinalProject_2f79b608"
+        },
+        {
             "name": "Debug (Launch)",
             "type": "java",
             "request": "launch",
