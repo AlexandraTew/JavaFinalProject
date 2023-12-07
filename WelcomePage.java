@@ -51,7 +51,7 @@ public class WelcomePage extends JFrame {
         gbc.gridy++; //incrementing gridy to move to next row for new components
         JPanel textPanel = new JPanel();
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-        textPanel.setBackground(new Color(188, 194, 155));
+        textPanel.setBackground(new Color(188, 194, 155)); //pastel green
         textPanel.setBorder(BorderFactory.createEmptyBorder(65, 0, 0, 0));
         mainPanel.add(textPanel, gbc); //adding to main panel for current grid row and column
 
@@ -79,7 +79,7 @@ public class WelcomePage extends JFrame {
         //panel to hold image and button and tagline- BoxLayout
         gbc.gridy++; //incrementing gridy to move to next row for new components
         JPanel imageButtonPanel = new JPanel();
-        imageButtonPanel.setBackground(new Color(188, 194, 155));
+        imageButtonPanel.setBackground(new Color(188, 194, 155)); //pastel green
         imageButtonPanel.setLayout(new BoxLayout(imageButtonPanel, BoxLayout.Y_AXIS));
         mainPanel.add(imageButtonPanel, gbc); //adding to main panel for current grid row and column
 
