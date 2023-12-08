@@ -60,7 +60,7 @@ public class WelcomePage extends JFrame {
         String[] explanationText = {
                 "Welcome to Discover Home, the platform dedicated to fostering a sustainable and connected future. We leverage big data to empower those seeking to connect with",
                 "like-minded individuals across the United States. Whether you are looking to find your people within your current community or are seeking to relocate to find where",
-                "you fit Discover Home will offer you the tools to find the region city and community that best aligns with your values. We go beyond traditional social networks, real",
+                "you fit Discover Home will offer you the tools to find the region, city, and community that best aligns with your values. We go beyond traditional social networks, real",
                 "estate tools, and eco-conscious apps to offer a holistic solution that prioritizes long-term well-being, community building, and ecological sustainability.",
                 " ", 
                 "Only when we are connected can we build a healthier happier, world."
