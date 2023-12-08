@@ -1,11 +1,13 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
+import java.util.Set;
 
 public class RankingsPage extends JFrame {
+    private JComboBox<String>[] dropdowns; // Added declaration for dropdowns array
 
     public RankingsPage() {
         //setting look to nimbus to make it less 2005
@@ -28,16 +30,15 @@ public class RankingsPage extends JFrame {
         gbc.weighty = 1; //handles vertical space distribution when window is resized
         gbc.weightx = 1;  //handles horizontal space distribution when window is resized
         gbc.fill = GridBagConstraints.BOTH;  //handles expansion of components when window is resized
- 
-        
+
         //top panel welcome label will sit on
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(new Color(152, 164, 125)); //sage green
-         
+
         //changing height of topPanel so the welcome label isnt so dwarfed by the size of the panel
         //welcome is set at 60 but this one is set at 80, idk why they had to be different to visually appear the same - im guessing some of the other spacing components are responsible for the difference
-        topPanel.setPreferredSize(new Dimension(topPanel.getPreferredSize().width, 80)); 
- 
+        topPanel.setPreferredSize(new Dimension(topPanel.getPreferredSize().width, 80));
+
         //welcome label - 'Discover Home'
         JLabel welcomeLabel = new JLabel("Discover Home", JLabel.CENTER);
         welcomeLabel.setFont(new Font("Sylfaen", Font.BOLD,50));
@@ -50,13 +51,12 @@ public class RankingsPage extends JFrame {
         gbcTopPanel.gridx = 0;
         gbcTopPanel.gridy = 0;
         gbcTopPanel.gridwidth = GridBagConstraints.REMAINDER; //making topPanel span entire width
-        gbcTopPanel.weighty = 0; //setting weighty to 0 bc it doesnt need to expand vertically 
+        gbcTopPanel.weighty = 0; //setting weighty to 0 bc it doesnt need to expand vertically
         gbcTopPanel.weightx = 1; //setting weightx to 1 to allow topPanel to span the entire width
         gbcTopPanel.fill = GridBagConstraints.HORIZONTAL; //letting topPanel stretch horizontally
 
         //adding topPanel to mainPAnel with custom gbc constraints
-        mainPanel.add(topPanel, gbcTopPanel); 
-
+        mainPanel.add(topPanel, gbcTopPanel);
 
         //leftPanel - boxlayout
         gbc.gridy++;
@@ -87,8 +87,9 @@ public class RankingsPage extends JFrame {
         rankingsHeaderLabel.setHorizontalAlignment(JLabel.CENTER);
         rightPanel.add(rankingsHeaderLabel);
 
-        // Dropdown menus for rankings
+        //ranking options
         String[] rankingOptions = {
+                "Select Option",
                 "Fresh Local Produce",
                 "Proximity to Parks and Natural Spaces",
                 "Abundance of Schools and Hospitals",
@@ -96,12 +97,14 @@ public class RankingsPage extends JFrame {
                 "Risk of Inclement Weather"
         };
 
-        for (int i = 1; i <= 5; i++) {
+        //Initializing dropdown array
+        dropdowns = new JComboBox[5]; 
+
+        for (int i = 0; i < 5; i++) {
             JComboBox<String> rankingDropdown = new JComboBox<>(rankingOptions);
-            rankingDropdown.setSelectedIndex(i - 1); // Select default value
-            //increasing width to make sure entire thing is visible
-            //rankingDropdown.setPreferredSize(new Dimension(350, 30));
+            rankingDropdown.setSelectedIndex(0); //making all boxes display "Select Option" to start with
             rightPanel.add(rankingDropdown);
+            dropdowns[i] = rankingDropdown; //assigning the JComboBox to the array
         }
 
         //submit button
@@ -109,9 +112,9 @@ public class RankingsPage extends JFrame {
         submitButton.setBackground(new Color(152, 164, 125)); //pastel Green background color
 
         //font/size for text
-        Font buttonFont = new Font("Arial", Font.PLAIN, 18); //same font as in WelcomePage.java - diff size
+        Font buttonFont = new Font("Arial", Font.PLAIN, 20); //same font as in WelcomePage.java - diff size
         submitButton.setFont(buttonFont);
-        
+
         //making submit panel to center submit button properly
         JPanel submitPanel = new JPanel();
         submitPanel.setLayout(new BoxLayout(submitPanel, BoxLayout.X_AXIS));
@@ -131,13 +134,18 @@ public class RankingsPage extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Close the current RankingsPage
-                dispose();  // This will close the current JFrame
+                String errorMessage = checkForErrors();
+                if (errorMessage != null) {
+                    JOptionPane.showMessageDialog(RankingsPage.this, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    // Close the current RankingsPage
+                    dispose();  // This will close the current JFrame
 
-                // Open the ResultsPage
-                SwingUtilities.invokeLater(() -> {
-                    new ResultsPage();
-                });
+                    // Open the ResultsPage
+                    SwingUtilities.invokeLater(() -> {
+                        new ResultsPage();
+                    });
+                }
             }
         });
 
@@ -155,6 +163,33 @@ public class RankingsPage extends JFrame {
         Image originalImage = originalImageIcon.getImage();
         Image resizedImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(resizedImage);
+    }
+
+    //helper method to check for duplicate selections and ensure "Select Option" is not selected in dropdowns
+    private String checkForErrors() {
+        Set<String> selectedOptions = new HashSet<>();
+        boolean selectOptionFound = false;
+
+        for (JComboBox<String> dropdown : dropdowns) {
+            String selectedOption = (String) dropdown.getSelectedItem();
+
+            //checking for "Select Option"
+            if (selectedOption.equals("Select Option")) {
+                selectOptionFound = true;
+            }
+
+            //checking for duplicate selections and throwing error message if found
+            if (!selectedOptions.add(selectedOption)) {
+                return "Error: Duplicate selection";
+            }
+        }
+
+        //if selectOptionFound then throwing specific error message
+        if (selectOptionFound) {
+            return "Error: Not all options selected";
+        }
+
+        return null; //no errors :)
     }
 
     public static void main(String[] args) {
