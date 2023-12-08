@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class RankingsPage extends JFrame {
-    private JComboBox<String>[] dropdowns; // Added declaration for dropdowns array
+    //declaration for dropdown array
+    private JComboBox<String>[] dropdowns; 
 
     public RankingsPage() {
         //setting look to nimbus to make it less 2005
@@ -22,8 +23,11 @@ public class RankingsPage extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(1515, 800));
 
-        //main panel - changed to gridbaglayout so components resize dynamically and equally - will use for all panels except topPanel
+        //main panel - gridbaglayout
         JPanel mainPanel = new JPanel(new GridBagLayout());
+        mainPanel.setBackground(new Color(188, 194, 155)); //pastel green color
+
+        //setting GridBagConstraints for mainPanel
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -31,9 +35,20 @@ public class RankingsPage extends JFrame {
         gbc.weightx = 1;  //handles horizontal space distribution when window is resized
         gbc.fill = GridBagConstraints.BOTH;  //handles expansion of components when window is resized
 
+        
+        //setting specific GridBagConstraints for top label so label spans entire window horizontally
+        GridBagConstraints gbcTopPanel = new GridBagConstraints();
+        gbcTopPanel.gridx = 0;
+        gbcTopPanel.gridy = 0;
+        gbcTopPanel.gridwidth = GridBagConstraints.REMAINDER; //making topPanel span entire width
+        gbcTopPanel.weighty = 0; //setting weighty to 0 bc it doesnt need to expand vertically
+        gbcTopPanel.weightx = 1; //setting weightx to 1 to allow topPanel to span the entire width
+        gbcTopPanel.fill = GridBagConstraints.HORIZONTAL; //letting topPanel stretch horizontally
+        
+        
         //top panel welcome label will sit on
         JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.setBackground(new Color(152, 164, 125)); //sage green
+        topPanel.setBackground(new Color(152, 164, 125)); //sage green color
 
         //changing height of topPanel so the welcome label isnt so dwarfed by the size of the panel
         //welcome is set at 60 but this one is set at 80, idk why they had to be different to visually appear the same - im guessing some of the other spacing components are responsible for the difference
@@ -46,62 +61,106 @@ public class RankingsPage extends JFrame {
         welcomeLabel.setBorder(BorderFactory.createEmptyBorder(25, 0, 0, 0)); //spacing around title
         topPanel.add(welcomeLabel, BorderLayout.CENTER);
 
-        //setting specific GridBagConstraints for top label so label spans entire window horizontally
-        GridBagConstraints gbcTopPanel = new GridBagConstraints();
-        gbcTopPanel.gridx = 0;
-        gbcTopPanel.gridy = 0;
-        gbcTopPanel.gridwidth = GridBagConstraints.REMAINDER; //making topPanel span entire width
-        gbcTopPanel.weighty = 0; //setting weighty to 0 bc it doesnt need to expand vertically
-        gbcTopPanel.weightx = 1; //setting weightx to 1 to allow topPanel to span the entire width
-        gbcTopPanel.fill = GridBagConstraints.HORIZONTAL; //letting topPanel stretch horizontally
-
         //adding topPanel to mainPAnel with custom gbc constraints
         mainPanel.add(topPanel, gbcTopPanel);
 
-        //leftPanel - boxlayout
-        gbc.gridy++;
+
+
+        //leftPanel - image and direction text - boxlayout
+        gbc.gridy++; //incrementing y so leftPanel is below topPanel
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        leftPanel.setBackground(new Color(188, 194, 155)); //pastel green color
+
+
+        //empty border for whole left panel to give it some breathing room
+        int leftPanelPadding = 20; //we can change this later ut i think 20 is nice
+        leftPanel.setBorder(BorderFactory.createEmptyBorder(0, leftPanelPadding, 0, leftPanelPadding));
+
+
+        /*first paragraph above the image - using html to format text bc I wanted a header and paragraph and this is the easiest
+        way to change font and size of text in a JLabel like that (as far as i know)*/
+        String firstParagraphText = "<html><div style='text-align: center;'>" +
+        "<h2 style='font-family: Arial; font-size: 24pt; font-weight: bold;'>Unleash the Power of Your Preferences</h2>" +
+        "<p style='font-family: Arial; font-size: 18pt;'>At Discover Home, we understand that the concept of an ideal living environment is as unique as you are. " +
+        "Our intuitive GUI allows you to effortlessly articulate your priorities by ranking criteria that matter most to you. " +
+        "With user-friendly dropdown menus, you take control of the factors that shape your living experience. Simply place the most important criterion in the first dropdown and continue in order of priority.</p></div></html>";
+
+        JLabel firstParagraphLabel = new JLabel(firstParagraphText);
+        firstParagraphLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        leftPanel.add(Box.createVerticalGlue()); //glue above text to center it
+        leftPanel.add(firstParagraphLabel);
+        leftPanel.add(Box.createVerticalGlue()); //glue below text to sep from the image
 
         //image
-        ImageIcon handImageIcon = resizeImage("images/hand.jpg", 300, 200); // Set width and height as needed
+        ImageIcon handImageIcon = resizeImage("images/hand.jpg", 300, 200); //may adjust later
         JLabel handImageLabel = new JLabel(handImageIcon);
         handImageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        leftPanel.add(Box.createVerticalGlue()); // Add vertical glue to center the image
         leftPanel.add(handImageLabel);
-        leftPanel.add(Box.createVerticalGlue()); // Add vertical glue to center the image
+        leftPanel.add(Box.createVerticalGlue()); //glue to seperate image from text
+
+        //second paragraph above the image - using html to format text again
+        String secondParagraphText = "<html><div style='text-align: center;'>" +
+        "<h2 style='font-family: Arial; font-size: 24pt; font-weight: bold;'>Tailored Recommendations, Just for You</h2>" +
+        "<p style='font-family: Arial; font-size: 18pt;'>Once you've meticulously ranked your preferences, just press the submit button, and our advanced algorithms swing into action. " +
+        "We methodically process your input to provide you with a curated list of locations that align with your individual priorities. " +
+        "Say goodbye to generic suggestions—welcome to a world of personalized recommendations tailored specifically to your lifestyle.</p></div></html>";
+
+        JLabel secondParagraphLabel = new JLabel(secondParagraphText);
+        secondParagraphLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        leftPanel.add(secondParagraphLabel);
+        leftPanel.add(Box.createVerticalGlue()); //glue below text to center it
 
         //adding leftPanel to mainPanel
         mainPanel.add(leftPanel, gbc);
 
-        //rightPanel - Dropdown menus for rankings and Submit button
+        
+        //rightPanel - Dropdown menus for rankings and Submit button - BoxLayout
         gbc.gridx++;
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+        rightPanel.setBackground(new Color(188, 194, 155)); //pastel green color
 
         //small header for dropdowns
-        gbc.insets = new Insets(0, 0, 0, 10); //moving everything to the right a bit
-        JLabel rankingsHeaderLabel = new JLabel("Rank these in order of importance");
-        rankingsHeaderLabel.setFont(new Font("Open Sans", Font.BOLD, 16));
+        gbc.insets = new Insets(0, 0, 0, 10); //moving everything to the left a bit
+        JLabel rankingsHeaderLabel = new JLabel("Tell Us What Matters Most to You");
+        rankingsHeaderLabel.setFont(new Font("Open Sans", Font.BOLD, 17));
         rankingsHeaderLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); //spacing around header
         rankingsHeaderLabel.setHorizontalAlignment(JLabel.CENTER);
-        rightPanel.add(rankingsHeaderLabel);
 
+        //panel to hold header label and glue to center it bc it being off center wa driving me nuts
+        JPanel rankingsHeaderPanel = new JPanel();
+        rankingsHeaderPanel.setLayout(new BoxLayout(rankingsHeaderPanel, BoxLayout.X_AXIS));
+        rankingsHeaderPanel.setBackground(new Color(188, 194, 155)); //pastel green color
+        
+        rankingsHeaderPanel.add(Box.createHorizontalGlue()); //glue on the left of header
+        rankingsHeaderPanel.add(rankingsHeaderLabel);
+        rankingsHeaderPanel.add(Box.createHorizontalGlue()); //glue on the right of header     
+
+        //adding header panel to right panel
+        rightPanel.add(rankingsHeaderPanel);
+
+
+        //custom font for dropdowns
+        Font customFont = new Font("Arial", Font.PLAIN, 19); //may adjust font at some point we'll see
         //ranking options
         String[] rankingOptions = {
-                "Select Option",
-                "Fresh Local Produce",
-                "Proximity to Parks and Natural Spaces",
-                "Abundance of Schools and Hospitals",
-                "Availability of Clean Energy",
-                "Risk of Inclement Weather"
+                //added spaces to beginning of text to give it breathing room
+                "  Select Option",
+                "  Fresh Local Produce",
+                "  Proximity to Parks and Natural Spaces",
+                "  Abundance of Schools and Hospitals",
+                "  Availability of Clean Energy",
+                "  Risk of Inclement Weather"
         };
 
         //Initializing dropdown array
         dropdowns = new JComboBox[5]; 
 
+        //looping through and adding text to dropdowns and dropdowns to rightPanel
         for (int i = 0; i < 5; i++) {
             JComboBox<String> rankingDropdown = new JComboBox<>(rankingOptions);
+            rankingDropdown.setFont(customFont); //setting font and text size for dropdown text
             rankingDropdown.setSelectedIndex(0); //making all boxes display "Select Option" to start with
             rightPanel.add(rankingDropdown);
             dropdowns[i] = rankingDropdown; //assigning the JComboBox to the array
@@ -109,7 +168,7 @@ public class RankingsPage extends JFrame {
 
         //submit button
         JButton submitButton = new JButton("Submit");
-        submitButton.setBackground(new Color(152, 164, 125)); //pastel Green background color
+        submitButton.setBackground(new Color(152, 164, 125)); //button color ****** needs to be adjusted - maybe also the dropdowns??
 
         //font/size for text
         Font buttonFont = new Font("Arial", Font.PLAIN, 20); //same font as in WelcomePage.java - diff size
@@ -118,6 +177,7 @@ public class RankingsPage extends JFrame {
         //making submit panel to center submit button properly
         JPanel submitPanel = new JPanel();
         submitPanel.setLayout(new BoxLayout(submitPanel, BoxLayout.X_AXIS));
+        submitPanel.setBackground(new Color(188, 194, 155)); //pastel green color
         submitPanel.add(Box.createHorizontalGlue()); //glue on the left of button
         submitPanel.add(submitButton);
         submitPanel.add(Box.createHorizontalGlue()); //glue on the right of button
@@ -149,7 +209,8 @@ public class RankingsPage extends JFrame {
             }
         });
 
-        //adding rightPanel to mainPanel
+        //adjusting weightx for rightPanel to take up less space horizontally
+        gbc.weightx = 0.4;
         mainPanel.add(rightPanel, gbc);
 
         //adding panel to JFrame, making visible and centering in window
@@ -158,6 +219,7 @@ public class RankingsPage extends JFrame {
         setVisible(true);
     }
 
+    //helper method to resize images
     private ImageIcon resizeImage(String imagePath, int width, int height) {
         ImageIcon originalImageIcon = new ImageIcon(imagePath);
         Image originalImage = originalImageIcon.getImage();

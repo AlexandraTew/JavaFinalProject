@@ -33,7 +33,7 @@ public class WelcomePage extends JFrame {
 
         //top panel welcome label will sit on
         JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.setBackground(new Color(152, 164, 125));
+        topPanel.setBackground(new Color(152, 164, 125)); //sage green color
         
         //changing height of topPanel so the welcome label isnt so dwarfed by the size of the panel
         topPanel.setPreferredSize(new Dimension(topPanel.getPreferredSize().width, 60)); 
