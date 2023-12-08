@@ -83,8 +83,8 @@ public class RankingsPage extends JFrame {
         String firstParagraphText = "<html><div style='text-align: center;'>" +
         "<h2 style='font-family: Arial; font-size: 24pt; font-weight: bold;'>Unleash the Power of Your Preferences</h2>" +
         "<p style='font-family: Arial; font-size: 18pt;'>At Discover Home, we understand that the concept of an ideal living environment is as unique as you are. " +
-        "Our intuitive GUI allows you to effortlessly articulate your priorities by ranking criteria that matter most to you. " +
-        "With user-friendly dropdown menus, you take control of the factors that shape your living experience. Simply place the most important criterion in the first dropdown and continue in order of priority.</p></div></html>";
+        "Our intuitive GUI allows you to articulate your priorities by ranking criteria that matter most to you. " +
+        "With user-friendly dropdown menus, you take control of the factors that shape your living experience. Place the most important criterion in the first dropdown and continue in order of priority.</p></div></html>";
 
         JLabel firstParagraphLabel = new JLabel(firstParagraphText);
         firstParagraphLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -102,7 +102,7 @@ public class RankingsPage extends JFrame {
         //second paragraph above the image - using html to format text again
         String secondParagraphText = "<html><div style='text-align: center;'>" +
         "<h2 style='font-family: Arial; font-size: 24pt; font-weight: bold;'>Tailored Recommendations, Just for You</h2>" +
-        "<p style='font-family: Arial; font-size: 18pt;'>Once you've meticulously ranked your preferences, just press the submit button, and our advanced algorithms swing into action. " +
+        "<p style='font-family: Arial; font-size: 18pt;'>Once you've ranked your preferences, just press submit and our recommender engine will take it from there. " +
         "We methodically process your input to provide you with a curated list of locations that align with your individual priorities. " +
         "Say goodbye to generic suggestions—welcome to a world of personalized recommendations tailored specifically to your lifestyle.</p></div></html>";
 
