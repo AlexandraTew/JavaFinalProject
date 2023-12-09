@@ -28,12 +28,14 @@ public class DashboardPage extends JFrame {
         JLabel titleLabel = new JLabel("Welcome to " + cityName + "! Your match score: " + percentageScore + "%", JLabel.CENTER);
         titleLabel.setFont(new Font("Sylfaen", Font.BOLD, 40)); // Increase font size
         titleLabel.setForeground(new Color(33, 50, 100)); // Blue font color
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(13, 0, -8, 0)); //padding around title and spacing for text
         headerPanel.add(titleLabel, BorderLayout.NORTH);
 
         JLabel descriptionLabel = new JLabel("Explore the data to find out why " + cityName + " is your number one match.");
         descriptionLabel.setFont(new Font("Bookman Old Style", Font.PLAIN, 24)); // Set font to Bookman Old Style and size 24
         descriptionLabel.setForeground(new Color(33, 50, 100)); // Navy font color
         descriptionLabel.setHorizontalAlignment(JLabel.CENTER); // Center the text
+        descriptionLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0)); //padding around text
         headerPanel.add(descriptionLabel, BorderLayout.CENTER);
 
         mainPanel.add(headerPanel, BorderLayout.NORTH);
