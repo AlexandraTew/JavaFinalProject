@@ -31,6 +31,7 @@ public class ResultsPage extends JFrame {
         headerLabel1.setFont(new Font("Sylfaen", Font.BOLD, 35)); //made this smaller to let intro text stand out more
         headerLabel1.setForeground(new Color(33, 50, 100)); // Navy font color
         headerLabel1.setBorder(BorderFactory.createEmptyBorder(20, 0, -6, 0)); //padding around title
+        headerPanel.add(headerLabel1, BorderLayout.NORTH);
 
         JLabel introLabel = new JLabel("Based upon your selections and our calculations, the following locations represent your top 5 location matches:");
         introLabel.setFont(new Font("Bookman Old Style", Font.PLAIN, 25)); //made this larger to be more in focus
