@@ -45,25 +45,20 @@ public class RankingsPage extends JFrame {
         gbcTopPanel.weightx = 1; //setting weightx to 1 to allow topPanel to span the entire width
         gbcTopPanel.fill = GridBagConstraints.HORIZONTAL; //letting topPanel stretch horizontally
         
-        
+
         //top panel welcome label will sit on
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(new Color(152, 164, 125)); //sage green color
-
-        //changing height of topPanel so the welcome label isnt so dwarfed by the size of the panel
-        //welcome is set at 60 but this one is set at 80, idk why they had to be different to visually appear the same - im guessing some of the other spacing components are responsible for the difference
-        topPanel.setPreferredSize(new Dimension(topPanel.getPreferredSize().width, 80));
 
         //welcome label - 'Discover Home'
         JLabel welcomeLabel = new JLabel("Discover Home", JLabel.CENTER);
         welcomeLabel.setFont(new Font("Sylfaen", Font.BOLD,50));
         welcomeLabel.setForeground(new Color(33, 50, 100)); //blue font color
-        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(25, 0, 0, 0)); //spacing around title
+        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, -5, 0)); //centering title in panel and controlling panel size
         topPanel.add(welcomeLabel, BorderLayout.CENTER);
 
         //adding topPanel to mainPAnel with custom gbc constraints
         mainPanel.add(topPanel, gbcTopPanel);
-
 
 
         //leftPanel - image and direction text - boxlayout
