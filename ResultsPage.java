@@ -6,11 +6,12 @@ import java.awt.event.ActionListener;
 public class ResultsPage extends JFrame {
 
     public ResultsPage() {
-            try {
-                UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         // Set up the main frame
         setTitle("Ranking Results");
         setSize(1500, 800);
@@ -22,31 +23,43 @@ public class ResultsPage extends JFrame {
         mainPanel.setLayout(new BorderLayout());
 
         // Add the banner/header with adjusted font color
-        JLabel headerLabel = new JLabel("Discover Home", JLabel.CENTER);
-        headerLabel.setFont(new Font("Sylfaen", Font.BOLD, 40));
-        headerLabel.setForeground(new Color(33, 50, 100)); // Blue font color
-        mainPanel.add(headerLabel, BorderLayout.NORTH);
+        JPanel headerPanel = new JPanel();
+        headerPanel.setLayout(new BorderLayout());
+        headerPanel.setBackground(new Color(152, 164, 125)); // Sage green background for the header
+
+        JLabel headerLabel1 = new JLabel("Discover Home", JLabel.CENTER);
+        headerLabel1.setFont(new Font("Bookman Old Style", Font.BOLD, 40));
+        headerLabel1.setForeground(new Color(33, 50, 100)); // Navy font color
+        headerPanel.add(headerLabel1, BorderLayout.NORTH);
+
+        JLabel introLabel = new JLabel("Based upon your selections and our calculations, the following locations represent your top 5 location matches:");
+        introLabel.setFont(new Font("Bookman Old Style", Font.PLAIN, 18));
+        introLabel.setForeground(new Color(33, 50, 100)); // Navy font color
+        introLabel.setHorizontalAlignment(JLabel.CENTER); // Center the text
+        headerPanel.add(introLabel, BorderLayout.CENTER);
+
+        mainPanel.add(headerPanel, BorderLayout.NORTH);
 
         // Add the result buttons
         JPanel resultPanel = new JPanel();
         resultPanel.setLayout(new GridLayout(5, 1, 0, 10)); // 5 rows, 1 column
         resultPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding
+        resultPanel.setBackground(new Color(188, 194, 155)); // Sage green background for the results panel
         mainPanel.add(resultPanel, BorderLayout.CENTER);
 
         // Add placeholder buttons for the top 5 results with percentage scores
-        Font openSansFont = new Font("Open Sans", Font.PLAIN, 18); // Using Open Sans font
+        Font bookmanFont = new Font("Bookman Old Style", Font.PLAIN, 18); // Using Bookman Old Style font
         int[] percentageScores = {97, 95, 92, 89, 85}; // Placeholder scores
         String[] cityNames = {"Portland, Oregon", "Boulder, Colorado", "Madison, Wisconsin", "Seattle, Washington", "Ithaca, New York"};
 
         for (int i = 0; i < 5; i++) {
             JButton resultButton = new JButton(cityNames[i] + " - " + percentageScores[i] + "% Match");
-            resultButton.setFont(openSansFont);
+            resultButton.setFont(bookmanFont);
+            resultButton.setForeground(Color.WHITE); // White font color
+            resultButton.setBackground(new Color(33, 50, 100)); // Navy button color
             resultButton.addActionListener(new ResultButtonListener(this, i + 1));
             resultPanel.add(resultButton);
         }
-
-        // Set background color for the buttons section
-        resultPanel.setBackground(new Color(188, 194, 155)); // sage green background
 
         // Add side images
         JLabel leftImage = new JLabel(new ImageIcon("images/borderimage1.jpg"));
@@ -56,7 +69,7 @@ public class ResultsPage extends JFrame {
         mainPanel.add(rightImage, BorderLayout.EAST);
 
         // Set background color for the main panel
-        mainPanel.setBackground(new Color(152, 164, 125)); // pastel sage green background
+        mainPanel.setBackground(new Color(188, 194, 155)); // Sage green background for the main panel
 
         // Add the main panel to the frame
         add(mainPanel);
