@@ -3,6 +3,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ImageInfo",
+            "request": "launch",
+            "mainClass": "ImageInfo",
+            "projectName": "JavaFinalProject_2f79b608"
+        },
+        {
+            "type": "java",
+            "name": "Dashboard",
+            "request": "launch",
+            "mainClass": "Dashboard",
+            "projectName": "JavaFinalProject_2f79b608"
+        },
+        {
+            "type": "java",
             "name": "ResultsPage",
             "request": "launch",
             "mainClass": "ResultsPage",
