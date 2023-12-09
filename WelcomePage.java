@@ -108,9 +108,10 @@ public class WelcomePage extends JFrame {
         //adding button
         JButton button = new JButton("Explore");
         button.setFont(new Font("Arial", Font.PLAIN, 20)); //considering Cambria for this font instead bc it feels boring rn
-        button.setBackground(new Color(70, 130, 180)); //button color
+        button.setBackground(new Color(33, 50, 100)); //navy button color has a weird outline for some reason? think its nimbus bt idk       
         button.setForeground(Color.WHITE); //button text color
         button.setPreferredSize(new Dimension(200, 50));
+        
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         imageButtonPanel.add(button);
         imageButtonPanel.add(Box.createRigidArea(new Dimension(0, 20)));

@@ -3,31 +3,49 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class RankingsPage extends JFrame {
+public class RankingsPage2 extends JFrame {
     private JComboBox<String>[] dropdowns;
+    private static final Color COMBO_COLOR = new Color(71, 81, 93);
 
+    private static class MyComboBox extends JComboBox  {
 
-    
-
-    private static class MyComboBox extends JComboBox<String> {
-
-        public MyComboBox(DefaultComboBoxModel<String> model) {
+        public MyComboBox(DefaultComboBoxModel model) {
             super(model);
             setForeground(Color.WHITE);
-            setFont(new Font("Arial", Font.PLAIN, 19));
+            setFont(new Font("Arial", Font.PLAIN, 30));
+            setPreferredSize(new Dimension(350, 50));
             setRenderer(new MyRenderer());
-            setBackground(new Color(33, 50, 100, 255)); //navy color plus full opacity with alpha value but stil not opaque
+        }
+
+    }
+
+    private static class MyRenderer extends DefaultListCellRenderer {
+        
+        // Remove @Override annotation
+        public Component getListCellRendererComponent(JList list, Object value,
+                            int index, boolean isSelected, boolean cellHasFocus) {
+
+            JComponent comp = (JComponent) super.getListCellRendererComponent(list,
+                    value, index, isSelected, cellHasFocus);
+
+            list.setBackground(COMBO_COLOR);
+            list.setForeground(Color.WHITE);
+            list.setOpaque(false);
+            
+            return comp;
         }
     }
-    public RankingsPage() {
-        try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+    public RankingsPage2() {
+        // try {
+        //     UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
 
         setTitle("Rankings Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,7 +110,7 @@ public class RankingsPage extends JFrame {
                 "<h2 style='font-family: Sylfaen; font-size: 26pt; font-weight: bold;'>Tailored Recommendations, Just for You</h2>" +
                 "<p style='font-family: Bookman Old Style; font-size: 19pt;'>Once you've ranked your preferences, just press submit and our recommender engine will take it from there. " +
                 "We methodically process your input to provide you with a curated list of locations that align with your individual priorities. " +
-                "Say goodbye to generic suggestions — welcome to a world of personalized recommendations tailored specifically to your lifestyle.</p></div></html>";
+                "Say goodbye to generic suggestions—welcome to a world of personalized recommendations tailored specifically to your lifestyle.</p></div></html>";
 
         JLabel secondParagraphLabel = new JLabel(secondParagraphText);
         secondParagraphLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -110,7 +128,7 @@ public class RankingsPage extends JFrame {
         gbcHeaderPanel.insets = new Insets(0, 0, 0, 10);
         JLabel rankingsHeaderLabel = new JLabel("Tell Us What Matters Most to You");
         rankingsHeaderLabel.setFont(new Font("Sylfaen", Font.BOLD, 20));
-        rankingsHeaderLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 5, 0));
+        rankingsHeaderLabel.setBorder(BorderFactory.createEmptyBorder(25, 0, 10, 0));
         rankingsHeaderLabel.setHorizontalAlignment(JLabel.CENTER);
 
         JPanel rankingsHeaderPanel = new JPanel();
@@ -199,24 +217,22 @@ public class RankingsPage extends JFrame {
         return null;
     }
 
-        // from an example on stack overflow
-        // https://stackoverflow.com/questions/64541587/lookandfeel-blocking-jcombobox-background-change
-        private static class MyRenderer extends DefaultListCellRenderer {
 
-        @Override
-        public Component getListCellRendererComponent(JList list, Object value,
-                                                      int index, boolean isSelected, boolean cellHasFocus) {
-    
-            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-    
-            list.setBackground(new Color(33, 50, 100)); //navy
-            list.setForeground(Color.WHITE);
-            list.setOpaque(true); //tried making this true so it would be opaque and that didnt work either
-    
-            return this;
+public static void main(String[] args) {
+    try {
+        String nimbus = Arrays.asList(UIManager.getInstalledLookAndFeels())
+                .stream()
+                .filter(i -> i.getName().equals("Nimbus"))
+                .findFirst()
+                .orElseThrow(() -> new UnsupportedLookAndFeelException("Nimbus Look and Feel not found"))
+                .getClassName();
+
+        UIManager.setLookAndFeel(nimbus);
+
+        UIManager.put("ComboBox.forceOpaque", false);
+        SwingUtilities.invokeLater(() -> new RankingsPage2());
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+        e.printStackTrace();
         }
-    }
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new RankingsPage());
     }
 }

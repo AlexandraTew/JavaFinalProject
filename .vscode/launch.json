@@ -3,6 +3,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RankingsPage2",
+            "request": "launch",
+            "mainClass": "RankingsPage2",
+            "projectName": "JavaFinalProject_2f79b608"
+        },
+        {
+            "type": "java",
+            "name": "RankingsPage$MyComboBox",
+            "request": "launch",
+            "mainClass": "RankingsPage$MyComboBox",
+            "projectName": "JavaFinalProject_2f79b608"
+        },
+        {
+            "type": "java",
             "name": "ImageInfo",
             "request": "launch",
             "mainClass": "ImageInfo",
