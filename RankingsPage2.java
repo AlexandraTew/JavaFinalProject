@@ -1,8 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -141,7 +139,7 @@ public class RankingsPage2 extends JFrame {
 
         rightPanel.add(rankingsHeaderPanel);
 
-        Font customFont = new Font("Arial", Font.PLAIN, 19);
+        Font customFont = new Font("Bookman Old Style", Font.PLAIN, 19);
         String[] rankingOptions = {
                 "  Select Option",
                 "  Fresh Local Produce",
@@ -163,7 +161,7 @@ public class RankingsPage2 extends JFrame {
         submitButton.setBackground(new Color(33, 50, 100)); //navy button
         submitButton.setForeground(Color.WHITE);
 
-        Font buttonFont = new Font("Arial", Font.PLAIN, 20);
+        Font buttonFont = new Font("Cambria", Font.PLAIN, 20);
         submitButton.setFont(buttonFont);
 
         JPanel submitPanel = new JPanel();

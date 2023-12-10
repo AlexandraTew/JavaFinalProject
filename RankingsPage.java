@@ -3,25 +3,14 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class RankingsPage extends JFrame {
-    private JComboBox<String>[] dropdowns;
+    private List<JComboBox<String>> dropdowns;
 
-
-    
-
-    private static class MyComboBox extends JComboBox<String> {
-
-        public MyComboBox(DefaultComboBoxModel<String> model) {
-            super(model);
-            setForeground(Color.WHITE);
-            setFont(new Font("Arial", Font.PLAIN, 19));
-            setRenderer(new MyRenderer());
-            setBackground(new Color(33, 50, 100, 255)); //navy color plus full opacity with alpha value but stil not opaque
-        }
-    }
     public RankingsPage() {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -71,8 +60,8 @@ public class RankingsPage extends JFrame {
         leftPanel.setBorder(BorderFactory.createEmptyBorder(0, leftPanelPadding, 0, leftPanelPadding));
 
         String firstParagraphText = "<html><div style='text-align: center;'>" +
-                "<h2 style='font-family: Sylfaen; font-size: 26pt; font-weight: bold;'>Unleash the Power of Your Preferences</h2>" +
-                "<p style='font-family: Bookman Old Style; font-size: 19pt;'>At Discover Home, we understand that the concept of an ideal living environment is as unique as you are. " +
+                "<h2 style='font-family: Bookman Old Style; font-size: 24pt; font-weight: bold;'>Unleash the Power of Your Preferences</h2>" +
+                "<p style='font-family: Bookman Old Style; font-size: 18pt;'>At Discover Home, we understand that the concept of an ideal living environment is as unique as you are. " +
                 "Our intuitive GUI allows you to articulate your priorities by ranking criteria that matter most to you. " +
                 "With user-friendly dropdown menus, you take control of the factors that shape your living experience. Place the most important criterion in the first dropdown and continue in order of priority.</p></div></html>";
 
@@ -89,10 +78,10 @@ public class RankingsPage extends JFrame {
         leftPanel.add(Box.createVerticalGlue());
 
         String secondParagraphText = "<html><div style='text-align: center;'>" +
-                "<h2 style='font-family: Sylfaen; font-size: 26pt; font-weight: bold;'>Tailored Recommendations, Just for You</h2>" +
-                "<p style='font-family: Bookman Old Style; font-size: 19pt;'>Once you've ranked your preferences, just press submit and our recommender engine will take it from there. " +
+                "<h2 style='font-family: Bookman Old Style; font-size: 24pt; font-weight: bold;'>Tailored Recommendations, Just for You</h2>" +
+                "<p style='font-family: Bookman Old Style; font-size: 18pt;'>Once you've ranked your preferences, just press submit and our recommender engine will take it from there. " +
                 "We methodically process your input to provide you with a curated list of locations that align with your individual priorities. " +
-                "Say goodbye to generic suggestions — welcome to a world of personalized recommendations tailored specifically to your lifestyle.</p></div></html>";
+                "Say goodbye to generic suggestions—welcome to a world of personalized recommendations tailored specifically to your lifestyle.</p></div></html>";
 
         JLabel secondParagraphLabel = new JLabel(secondParagraphText);
         secondParagraphLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -106,11 +95,10 @@ public class RankingsPage extends JFrame {
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
         rightPanel.setBackground(new Color(188, 194, 155));
 
-        GridBagConstraints gbcHeaderPanel = new GridBagConstraints();
-        gbcHeaderPanel.insets = new Insets(0, 0, 0, 10);
+        gbc.insets = new Insets(0, 0, 0, 10);
         JLabel rankingsHeaderLabel = new JLabel("Tell Us What Matters Most to You");
-        rankingsHeaderLabel.setFont(new Font("Sylfaen", Font.BOLD, 20));
-        rankingsHeaderLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 5, 0));
+        rankingsHeaderLabel.setFont(new Font("Bookman Old Style", Font.BOLD, 17));
+        rankingsHeaderLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         rankingsHeaderLabel.setHorizontalAlignment(JLabel.CENTER);
 
         JPanel rankingsHeaderPanel = new JPanel();
@@ -123,7 +111,8 @@ public class RankingsPage extends JFrame {
 
         rightPanel.add(rankingsHeaderPanel);
 
-        Font customFont = new Font("Arial", Font.PLAIN, 19);
+        Font customFont = new Font("Bookman Old Style", Font.PLAIN, 19);
+
         String[] rankingOptions = {
                 "  Select Option",
                 "  Fresh Local Produce",
@@ -133,19 +122,38 @@ public class RankingsPage extends JFrame {
                 "  Risk of Inclement Weather"
         };
 
-        dropdowns = new JComboBox[5];
+        dropdowns = new ArrayList<>();
+
         for (int i = 0; i < 5; i++) {
-            MyComboBox rankingDropdown = new MyComboBox(new DefaultComboBoxModel<>(rankingOptions));
+            JComboBox<String> rankingDropdown = new JComboBox<>(rankingOptions);
+            rankingDropdown.setFont(customFont);
             rankingDropdown.setSelectedIndex(0);
+            
+            // Set the background color to navy blue
+            rankingDropdown.setBackground(new Color(33, 50, 100));
+            
+            rankingDropdown.setRenderer(new DefaultListCellRenderer() {
+                @Override
+                public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                                                              boolean isSelected, boolean cellHasFocus) {
+                    super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                    setForeground(Color.WHITE);
+                    
+                    // Set the background color to navy blue
+                    setBackground(new Color(33, 50, 100));
+                    
+                    return this;
+                }
+            });
             rightPanel.add(rankingDropdown);
-            dropdowns[i] = rankingDropdown;
+            dropdowns.add(rankingDropdown);
         }
 
         JButton submitButton = new JButton("Submit");
-        submitButton.setBackground(new Color(33, 50, 100)); //navy button
+        submitButton.setBackground(new Color(33, 50, 100));
         submitButton.setForeground(Color.WHITE);
 
-        Font buttonFont = new Font("Arial", Font.PLAIN, 20);
+        Font buttonFont = new Font("Bookman Old Style", Font.PLAIN, 20);
         submitButton.setFont(buttonFont);
 
         JPanel submitPanel = new JPanel();
@@ -158,6 +166,19 @@ public class RankingsPage extends JFrame {
         int padding = 7;
         EmptyBorder emptyBorder = new EmptyBorder(padding, padding, padding, padding);
         submitPanel.setBorder(emptyBorder);
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String errorMessage = checkForErrors();
+                if (errorMessage != null) {
+                    JOptionPane.showMessageDialog(RankingsPage.this, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    dispose();
+                    SwingUtilities.invokeLater(() -> new ResultsPage());
+                }
+            }
+        });
 
         rightPanel.add(submitPanel);
 
@@ -180,8 +201,8 @@ public class RankingsPage extends JFrame {
         Set<String> selectedOptions = new HashSet<>();
         boolean selectOptionFound = false;
 
-        for (JComboBox<String> dropdown : dropdowns) {
-            String selectedOption = (String) dropdown.getSelectedItem();
+        for (int i = 0; i < dropdowns.size(); i++) {
+            String selectedOption = (String) dropdowns.get(i).getSelectedItem();
 
             if (selectedOption.equals("Select Option")) {
                 selectOptionFound = true;
@@ -199,23 +220,6 @@ public class RankingsPage extends JFrame {
         return null;
     }
 
-        // from an example on stack overflow
-        // https://stackoverflow.com/questions/64541587/lookandfeel-blocking-jcombobox-background-change
-        private static class MyRenderer extends DefaultListCellRenderer {
-
-        @Override
-        public Component getListCellRendererComponent(JList list, Object value,
-                                                      int index, boolean isSelected, boolean cellHasFocus) {
-    
-            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-    
-            list.setBackground(new Color(33, 50, 100)); //navy
-            list.setForeground(Color.WHITE);
-            list.setOpaque(true); //tried making this true so it would be opaque and that didnt work either
-    
-            return this;
-        }
-    }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new RankingsPage());
     }
