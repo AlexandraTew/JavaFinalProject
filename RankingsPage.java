@@ -44,7 +44,7 @@ public class RankingsPage extends JFrame {
         topPanel.setBackground(new Color(152, 164, 125));
 
         JLabel welcomeLabel = new JLabel("Discover Home", JLabel.CENTER);
-        welcomeLabel.setFont(new Font("Sylfaen", Font.BOLD, 50));
+        welcomeLabel.setFont(new Font("Bookman Old Style", Font.PLAIN, 50));
         welcomeLabel.setForeground(new Color(33, 50, 100));
         welcomeLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, -5, 0));
         topPanel.add(welcomeLabel, BorderLayout.CENTER);
@@ -97,7 +97,7 @@ public class RankingsPage extends JFrame {
 
         gbc.insets = new Insets(0, 0, 0, 10);
         JLabel rankingsHeaderLabel = new JLabel("Tell Us What Matters Most to You");
-        rankingsHeaderLabel.setFont(new Font("Bookman Old Style", Font.BOLD, 17));
+        rankingsHeaderLabel.setFont(new Font("Bookman Old Style", Font.PLAIN, 17));
         rankingsHeaderLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         rankingsHeaderLabel.setHorizontalAlignment(JLabel.CENTER);
 

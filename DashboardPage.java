@@ -26,7 +26,7 @@ public class DashboardPage extends JFrame {
         headerPanel.setBackground(new Color(152, 164, 125)); // Sage green background for the header
 
         JLabel titleLabel = new JLabel("Welcome to " + cityName + "! Your match score: " + percentageScore + "%", JLabel.CENTER);
-        titleLabel.setFont(new Font("Sylfaen", Font.BOLD, 40)); // Increase font size
+        titleLabel.setFont(new Font("Bookman Old Style", Font.PLAIN, 36)); // Increase font size
         titleLabel.setForeground(new Color(33, 50, 100)); // Blue font color
         titleLabel.setBorder(BorderFactory.createEmptyBorder(13, 0, -8, 0)); //padding around title and spacing for text
         headerPanel.add(titleLabel, BorderLayout.NORTH);

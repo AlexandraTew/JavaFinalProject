@@ -41,7 +41,7 @@ public class WelcomePage extends JFrame {
         
         //welcome label - 'Discover Home'
         JLabel welcomeLabel = new JLabel("Discover Home", JLabel.CENTER);
-        welcomeLabel.setFont(new Font("Sylfaen", Font.BOLD,50));
+        welcomeLabel.setFont(new Font("Bookman Old Style", Font.PLAIN,50));
         welcomeLabel.setForeground(new Color(33, 50, 100)); //blue font color
         welcomeLabel.setBorder(BorderFactory.createEmptyBorder(25, 0, 0, 0)); //spacing around title
         topPanel.add(welcomeLabel, BorderLayout.CENTER);
