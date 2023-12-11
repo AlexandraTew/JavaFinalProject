@@ -204,7 +204,7 @@ public class RankingsPage extends JFrame {
         for (int i = 0; i < dropdowns.size(); i++) {
             String selectedOption = (String) dropdowns.get(i).getSelectedItem();
 
-            if (selectedOption.equals("Select Option")) {
+            if (selectedOption.equals("  Select Option")) {
                 selectOptionFound = true;
             }
 
