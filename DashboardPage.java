@@ -1,5 +1,11 @@
+//getting all the bits
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import javax.swing.border.EmptyBorder;
 
 public class DashboardPage extends JFrame {
 
@@ -11,7 +17,7 @@ public class DashboardPage extends JFrame {
         }
         // Set up the main window
         setTitle("Dashboard");
-        setSize(1500, 800);
+        setSize(1515, 850);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -20,68 +26,95 @@ public class DashboardPage extends JFrame {
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(new Color(188, 194, 155)); // Sage green background for the main panel
 
-        // Add a welcome message with the city name and percentage score at the top
+        //header panel - holds title and description - borderlayout
         JPanel headerPanel = new JPanel();
         headerPanel.setLayout(new BorderLayout());
         headerPanel.setBackground(new Color(152, 164, 125)); // Sage green background for the header
 
         JLabel titleLabel = new JLabel("Welcome to " + cityName + "! Your match score: " + percentageScore + "%", JLabel.CENTER);
-        titleLabel.setFont(new Font("Bookman Old Style", Font.PLAIN, 36)); // Increase font size
+        titleLabel.setFont(new Font("Sylfaen", Font.BOLD, 25)); // Increase font size
         titleLabel.setForeground(new Color(33, 50, 100)); // Blue font color
-        titleLabel.setBorder(BorderFactory.createEmptyBorder(13, 0, -8, 0)); //padding around title and spacing for text
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(7, 0, -10, 0)); //padding around title and spacing for text
         headerPanel.add(titleLabel, BorderLayout.NORTH);
 
         JLabel descriptionLabel = new JLabel("Explore the data to find out why " + cityName + " is your number one match.");
         descriptionLabel.setFont(new Font("Bookman Old Style", Font.PLAIN, 24)); // Set font to Bookman Old Style and size 24
         descriptionLabel.setForeground(new Color(33, 50, 100)); // Navy font color
         descriptionLabel.setHorizontalAlignment(JLabel.CENTER); // Center the text
-        descriptionLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0)); //padding around text
+        descriptionLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 7, 0)); //padding around text
         headerPanel.add(descriptionLabel, BorderLayout.CENTER);
 
         mainPanel.add(headerPanel, BorderLayout.NORTH);
 
-        // Middle section
-        JPanel middlePanel = new JPanel(new GridLayout(1, 2));
-        middlePanel.setPreferredSize(new Dimension(getWidth(), getHeight() / 2));
+        //middle panel - GridBagLayout and an empty border
+        JPanel middlePanel = new JPanel(new GridBagLayout());
+        middlePanel.setBorder(new EmptyBorder(20, 10, 10, 10)); //padding around outermost image edg
         middlePanel.setBackground(new Color(188, 194, 155)); // Sage green background for the middle panel
 
-        // Image 1
-        ImageIcon imageIcon1 = new ImageIcon("images/Figure_6.png");
-        JLabel imageLabel1 = new JLabel(imageIcon1);
-        imageLabel1.setHorizontalAlignment(JLabel.CENTER);
-        middlePanel.add(imageLabel1);
 
-        // Image 2
-        ImageIcon imageIcon2 = new ImageIcon("images/Figure_3.png");
-        JLabel imageLabel2 = new JLabel(imageIcon2);
-        imageLabel2.setHorizontalAlignment(JLabel.CENTER);
-        middlePanel.add(imageLabel2);
+        //setting max heights for the two image rows so that the images can't exceed this height
+        int maxFirstRowHeight = 420; //first row - 2 big images
+        int maxLastRowHeight = 280; //second row - 3 baby imgs
+
+        GridBagConstraints firstRowGBC = new GridBagConstraints();
+        firstRowGBC.weightx = 1; // spreads images out evenly
+        firstRowGBC.gridx = 0;
+        
+        // Image 1
+        ImageIcon imageIcon1 = new ImageIcon("images/Figure_A2.png");
+        Image image1 = imageIcon1.getImage().getScaledInstance(-1, maxFirstRowHeight, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon1 = new ImageIcon(image1);
+        JLabel imageLabel1 = new JLabel(scaledIcon1);
+        middlePanel.add(imageLabel1, firstRowGBC);
+        
+        // Adjust the position of Image 1 slightly to the right
+        firstRowGBC.insets = new Insets(0, 0, 0, 0); // Adjust right margin of Image 1
+        firstRowGBC.gridx++;
+        
+        //Image 2
+        firstRowGBC.insets = new Insets(0, -20, 0, 0); // Adjust left margin of Image 2
+        ImageIcon imageIcon2 = new ImageIcon("images/Figure_B3.png");
+        Image image2 = imageIcon2.getImage().getScaledInstance(-1, maxFirstRowHeight, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon2 = new ImageIcon(image2);
+        JLabel imageLabel2 = new JLabel(scaledIcon2);
+        middlePanel.add(imageLabel2, firstRowGBC);
 
         mainPanel.add(middlePanel, BorderLayout.CENTER);
 
-        // Bottom section
-        JPanel bottomPanel = new JPanel(new GridLayout(1, 3));
-        bottomPanel.setPreferredSize(new Dimension(getWidth(), getHeight() / 3));
+        //Bottom panel - GridBagLayout and an empty border
+        JPanel bottomPanel = new JPanel(new GridBagLayout());
+        bottomPanel.setBorder(new EmptyBorder(10, 10, 15, 10)); //padding around outermost image edges
         bottomPanel.setBackground(new Color(188, 194, 155)); // Sage green background for the bottom panel
 
-        // Image 3
-        ImageIcon imageIcon3 = new ImageIcon("images/Figure_2.5.png");
-        JLabel imageLabel3 = new JLabel(imageIcon3);
-        imageLabel3.setHorizontalAlignment(JLabel.CENTER);
-        bottomPanel.add(imageLabel3);
+        //gbc for last 3 images
+        GridBagConstraints lastRowGBC = new GridBagConstraints();
+        lastRowGBC.weightx = 1; //again spacing the images evenly (horizontally) - still not sure why but it still works lol
+        lastRowGBC.gridx = 0;
+
+        //Image 3
+        ImageIcon imageIcon3 = new ImageIcon("images/Figure_C1.png");
+        Image image3 = imageIcon3.getImage().getScaledInstance(-1, maxLastRowHeight, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon3 = new ImageIcon(image3);
+        JLabel imageLabel3 = new JLabel(scaledIcon3);
+        bottomPanel.add(imageLabel3, lastRowGBC);
+        lastRowGBC.gridx++;
 
         // Image 4
-        ImageIcon imageIcon4 = new ImageIcon("images/Figure_4.png");
-        JLabel imageLabel4 = new JLabel(imageIcon4);
-        imageLabel4.setHorizontalAlignment(JLabel.CENTER);
-        bottomPanel.add(imageLabel4);
+        ImageIcon imageIcon4 = new ImageIcon("images/Figure_D.png");
+        Image image4 = imageIcon4.getImage().getScaledInstance(-1, maxLastRowHeight, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon4 = new ImageIcon(image4);
+        JLabel imageLabel4 = new JLabel(scaledIcon4);
+        bottomPanel.add(imageLabel4, lastRowGBC);
+        lastRowGBC.gridx++;
 
         // Image 5
-        ImageIcon imageIcon5 = new ImageIcon("images/Figure_1.png");
-        JLabel imageLabel5 = new JLabel(imageIcon5);
-        imageLabel5.setHorizontalAlignment(JLabel.CENTER);
-        bottomPanel.add(imageLabel5);
-
+        ImageIcon imageIcon5 = new ImageIcon("images/Figure_1e.png");
+        Image image5 = imageIcon5.getImage().getScaledInstance(-1, maxLastRowHeight, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon5 = new ImageIcon(image5);
+        JLabel imageLabel5 = new JLabel(scaledIcon5);
+        bottomPanel.add(imageLabel5, lastRowGBC);
+        lastRowGBC.gridx++;
+        
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 
         // Add the main panel to the frame
