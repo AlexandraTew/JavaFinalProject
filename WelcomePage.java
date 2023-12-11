@@ -43,7 +43,7 @@ public class WelcomePage extends JFrame {
         JLabel welcomeLabel = new JLabel("Discover Home", JLabel.CENTER);
         welcomeLabel.setFont(new Font("Bookman Old Style", Font.PLAIN,50));
         welcomeLabel.setForeground(new Color(33, 50, 100)); //blue font color
-        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(25, 0, 0, 0)); //spacing around title
+        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0)); //spacing around title
         topPanel.add(welcomeLabel, BorderLayout.CENTER);
         mainPanel.add(topPanel, gbc); //adding to main panel for current grid row and column
 
@@ -107,7 +107,7 @@ public class WelcomePage extends JFrame {
 
         //adding button
         JButton button = new JButton("Explore");
-        button.setFont(new Font("Arial", Font.PLAIN, 20)); //considering Cambria for this font instead bc it feels boring rn
+        button.setFont(new Font("Bookman Old Style", Font.PLAIN, 20)); //considering Cambria for this font instead bc it feels boring rn
         button.setBackground(new Color(33, 50, 100)); //navy button color has a weird outline for some reason? think its nimbus bt idk       
         button.setForeground(Color.WHITE); //button text color
         button.setPreferredSize(new Dimension(200, 50));

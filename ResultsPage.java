@@ -18,26 +18,26 @@ public class ResultsPage extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Center the frame on the screen
 
-        // Create a panel to hold components
+        // main panel
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 
-        // Add the banner/header with adjusted font color
+        //header panel - holds title and description - borderlayout
         JPanel headerPanel = new JPanel();
         headerPanel.setLayout(new BorderLayout());
         headerPanel.setBackground(new Color(152, 164, 125)); // Sage green background for the header
 
         JLabel headerLabel1 = new JLabel("Discover Home", JLabel.CENTER);
-        headerLabel1.setFont(new Font("Bookman Old Style", Font.PLAIN, 35)); //made this smaller to let intro text stand out more
+        headerLabel1.setFont(new Font("Bookman Old Style", Font.PLAIN, 30)); //made this smaller to let intro text stand out more
         headerLabel1.setForeground(new Color(33, 50, 100)); // Navy font color
-        headerLabel1.setBorder(BorderFactory.createEmptyBorder(20, 0, -6, 0)); //padding around title
+        headerLabel1.setBorder(BorderFactory.createEmptyBorder(4, 0, 2, 0)); //padding around title
         headerPanel.add(headerLabel1, BorderLayout.NORTH);
 
         JLabel introLabel = new JLabel("Based upon your selections and our calculations, the following locations represent your top 5 location matches:");
         introLabel.setFont(new Font("Bookman Old Style", Font.PLAIN, 25)); //made this larger to be more in focus
         introLabel.setForeground(new Color(33, 50, 100)); // Navy font color
         introLabel.setHorizontalAlignment(JLabel.CENTER); // Center the text
-        introLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 16, 0)); //spacing/ padding around text
+        introLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 8, 0)); //spacing/ padding around text
         headerPanel.add(introLabel, BorderLayout.CENTER);
 
         mainPanel.add(headerPanel, BorderLayout.NORTH);

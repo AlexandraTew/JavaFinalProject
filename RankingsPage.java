@@ -62,7 +62,7 @@ public class RankingsPage extends JFrame {
         JLabel welcomeLabel = new JLabel("Discover Home", JLabel.CENTER);
         welcomeLabel.setFont(new Font("Bookman Old Style", Font.PLAIN, 50));
         welcomeLabel.setForeground(new Color(33, 50, 100)); //navy font
-        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, -5, 0)); //centering title in panel and controlling panel size
+        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); //centering title in panel and controlling panel size
         topPanel.add(welcomeLabel, BorderLayout.CENTER);
 
         mainPanel.add(topPanel, gbcTopPanel);
@@ -79,10 +79,10 @@ public class RankingsPage extends JFrame {
 
         //using html format to format header and paragraph together easily
         String firstParagraphText = "<html><div style='text-align: center;'>" +
-                "<h2 style='font-family: Bookman Old Style; font-size: 24pt; font-weight: bold;'>Unleash the Power of Your Preferences</h2>" +
-                "<p style='font-family: Bookman Old Style; font-size: 18pt;'>At Discover Home, we understand that the concept of an ideal living environment is as unique as you are. " +
-                "Our intuitive GUI allows you to articulate your priorities by ranking criteria that matter most to you. " +
-                "With user-friendly dropdown menus, you take control of the factors that shape your living experience. Place the most important criterion in the first dropdown and continue in order of priority.</p></div></html>";
+        "<h2 style='font-family: Bookman Old Style; font-size: 24pt; font-weight: normal; text-decoration: underline;'>Unleash the Power of Your Preferences</h2>" +
+        "<p style='font-family: Bookman Old Style; font-size: 18pt;'>At Discover Home, we understand that the concept of an ideal living environment is as unique as you are. " +
+        "Our intuitive GUI allows you to articulate your priorities by ranking criteria that matter most to you. " +
+        "With user-friendly dropdown menus, you take control of the factors that shape your living experience. Place the most important criterion in the first dropdown and continue in order of priority.</p></div></html>";
 
         //adding first paragraph to panel
         JLabel firstParagraphLabel = new JLabel(firstParagraphText);
@@ -100,7 +100,7 @@ public class RankingsPage extends JFrame {
 
         //using html format to format header and paragraph together easily
         String secondParagraphText = "<html><div style='text-align: center;'>" +
-                "<h2 style='font-family: Bookman Old Style; font-size: 24pt; font-weight: bold;'>Tailored Recommendations, Just for You</h2>" +
+                "<h2 style='font-family: Bookman Old Style; font-size: 26pt; font-weight: normal;'>Tailored Recommendations, Just for You</h2>" +
                 "<p style='font-family: Bookman Old Style; font-size: 18pt;'>Once you've ranked your preferences, just press submit and our recommender engine will take it from there. " +
                 "We methodically process your input to provide you with a curated list of locations that align with your individual priorities. " +
                 "Say goodbye to generic suggestions—welcome to a world of personalized recommendations tailored specifically to your lifestyle.</p></div></html>";
