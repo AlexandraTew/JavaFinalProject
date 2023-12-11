@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RankingsPage$MyRenderer",
+            "request": "launch",
+            "mainClass": "RankingsPage$MyRenderer",
+            "projectName": "JavaFinalProject_2f79b608"
+        },
+        {
+            "type": "java",
             "name": "RankingsPage2",
             "request": "launch",
             "mainClass": "RankingsPage2",
