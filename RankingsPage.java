@@ -141,7 +141,6 @@ public class RankingsPage extends JFrame {
         
 
         //ranking options
-        Font customFont = new Font("Bookman Old Style", Font.PLAIN, 19); //font applied to all dropdowns
         String[] rankingOptions = {
                 "  Select Option",
                 "  Fresh Local Produce",
