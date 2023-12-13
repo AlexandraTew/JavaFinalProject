@@ -79,7 +79,7 @@ public class RankingsPage extends JFrame {
 
         //using html format to format header and paragraph together easily
         String firstParagraphText = "<html><div style='text-align: center;'>" +
-        "<h2 style='font-family: Bookman Old Style; font-size: 24pt; font-weight: normal; text-decoration: underline;'>Unleash the Power of Your Preferences</h2>" +
+        "<h2 style='font-family: Bookman Old Style; font-size: 26pt; font-weight: normal;'>Unleash the Power of Your Preferences</h2>" +
         "<p style='font-family: Bookman Old Style; font-size: 18pt;'>At Discover Home, we understand that the concept of an ideal living environment is as unique as you are. " +
         "Our intuitive GUI allows you to articulate your priorities by ranking criteria that matter most to you. " +
         "With user-friendly dropdown menus, you take control of the factors that shape your living experience. Place the most important criterion in the first dropdown and continue in order of priority.</p></div></html>";
@@ -225,7 +225,7 @@ public class RankingsPage extends JFrame {
         for (JComboBox<String> dropdown : dropdowns) {
             String selectedOption = (String) dropdown.getSelectedItem();
 
-            if (selectedOption.equals("Select Option")) {
+            if (selectedOption.equals("  Select Option")) {
                 selectOptionFound = true;
             }
 
